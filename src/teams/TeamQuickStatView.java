@@ -24,20 +24,24 @@ public class TeamQuickStatView {
 	
 	public JPanel build() {
 		this.view.setLayout(new GridLayout(1, 3));
-		//the first 2 columns are just empty for the time being.
-		this.view.add(new JLabel());
-		this.view.add(new JLabel());
+		this.populateAggregateAvail();
+		this.view.add(new JLabel("Days Available:"));
+		this.view.add(new JLabel(""+this.totalavail.getDayScore()));
 		this.view.add(this.totalavail.getUIView());
 		
 		return this.view;
 	}
-	private void update() {
+	
+	private void populateAggregateAvail() {
 		//idk why listmodel has this silly data backend..
 		Availability[] list = new Availability[tmodel.teamMembers.size()];
 		for(int i = 0 ; i < list.length ; i++) {
 			list[i] = tmodel.teamMembers.getElementAt(i).getAvailability();
 		}
 		Availability.mashUpAvailabilities(list, totalavail);
+	}
+	private void update() {
+		
 		view.removeAll();
 		build();
 		view.revalidate();

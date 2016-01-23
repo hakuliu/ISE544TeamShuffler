@@ -47,6 +47,23 @@ public class Availability {
 			this.listoavail[i] = parseOption(optstr);
 		}
 	}
+	//gives you the number of days in which there is at least one available time (YES or MAYBE)
+	public int getDayScore() {
+		int score = 0;
+		for(int day = 0 ; day < DAYSPERWEEK ; day++) {
+			boolean hasAvail = false;
+			for(int div = 0 ; div < DAILYDIVISION ; div++) {
+				int index = day * DAILYDIVISION + div;
+				if(this.listoavail[index] != AvailabilityOption.NO) {
+					hasAvail = true;
+				}
+			}
+			if(hasAvail) {
+				score++;
+			}
+		}
+		return score;
+	}
 	
 	private AvailabilityOption parseOption(String opt) {
 		if (opt.equalsIgnoreCase("Yes")) {
