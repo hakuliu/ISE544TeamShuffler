@@ -25,22 +25,14 @@ public class Availability {
 	
 	//yeah, i'm not really supposed to put UI stuff in model but i wanna save time LOL
 	public JPanel getUIView() {
-		JPanel rv = new JPanel(new GridBagLayout());
-		
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		gbc.weightx = 1.0 / listoavail.length;
-		gbc.weighty = 1.0;
-		gbc.insets = new Insets(0, 1, 0, 1);
-		
+		JPanel rv = new JPanel(new GridLayout(1,listoavail.length,1,0));
+
 		for(int i = 0 ; i < listoavail.length ; i++) {
 			JLabel label = new JLabel(" ");
 			label.setOpaque(true);
 			label.setBackground(listoavail[i].getColorForUI());
 			label.setMinimumSize(new Dimension(40,20));
-			rv.add(label, gbc);
-			gbc.gridx++;
+			rv.add(label);
 		}
 		
 		return rv;
