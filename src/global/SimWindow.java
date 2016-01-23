@@ -7,7 +7,9 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeListener;
 
+import javax.swing.Action;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -37,12 +39,21 @@ public class SimWindow {
 		window.setJMenuBar(topbar);
 		window.add(mainview);
 	}
-	
+	private void clearAllProgress() {
+		controller.resetEverything();
+	}
 	private JMenuBar buildMenuBar() {
 		JMenuBar topbar = new JMenuBar();
 		JMenu filesMenu = new JMenu("File");
 		
-		JMenuItem generateRandom = new JMenuItem("Generate Random Members");
+		JMenuItem generateRandom = new JMenuItem("Reset");
+		generateRandom.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				clearAllProgress();
+			}
+		});
 		filesMenu.add(generateRandom);
 		
 		

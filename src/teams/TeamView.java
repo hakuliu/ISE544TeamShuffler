@@ -23,9 +23,9 @@ import member.MemberTransferListener;
 
 public class TeamView {
 	JPanel panel;
-	UtilController control;
-	public TeamView(UtilController controller) {
-		this.control = controller;
+	TeamModel tmodel;
+	public TeamView(TeamModel mod) {
+		this.tmodel = mod;
 		this.panel = new JPanel();
 		
 	}
@@ -43,7 +43,7 @@ public class TeamView {
 	
 	private JList<Member> getList() {
 		JList<Member> list = new JList<Member>();
-		list.setModel(new DefaultListModel<Member>());
+		list.setModel(this.tmodel.getMemberListModel());
 		list.setVisibleRowCount(5);
 		list.setFixedCellHeight(15);
 		list.setFixedCellWidth(100);

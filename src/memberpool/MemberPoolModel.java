@@ -15,7 +15,7 @@ public class MemberPoolModel {
 		jlistmodel = new DefaultListModel<>();
 	}
 	
-	public void populateData() {
+	public void resetAndPopulateData() {
 		Collection<Member> parseddata = DataReader.parseData("StudentAvailabilityTreated.csv");
 		jlistmodel.removeAllElements();
 		for(Member m : parseddata) {

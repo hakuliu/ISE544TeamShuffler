@@ -23,6 +23,17 @@ public class UtilController {
 		for(int i = 0 ; i < this.teams.length ; i++) {
 			this.teams[i] = new TeamModel("Team " + (i+1));
 		}
-		this.poolmodel.populateData();
+		this.poolmodel.resetAndPopulateData();
+	}
+	
+	public TeamModel[] getTeams() {
+		return this.teams;
+	}
+	
+	public void resetEverything() {
+		for(int i = 0 ; i < this.teams.length ; i++) {
+			this.teams[i].reset();
+		}
+		this.poolmodel.resetAndPopulateData();
 	}
 }

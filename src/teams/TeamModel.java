@@ -2,14 +2,22 @@ package teams;
 
 import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
+import javax.swing.ListModel;
+
 import member.Member;
 
 public class TeamModel {
 	String teamName;
-	ArrayList<Member> teamMembers;
+	DefaultListModel<Member> teamMembers;
 	public TeamModel(String name) {
 		this.teamName = name;
-		teamMembers = new ArrayList<>();
+		teamMembers = new DefaultListModel<>();
 	}
-	
+	public ListModel<Member> getMemberListModel() {
+		return teamMembers;
+	}
+	public void reset() {
+		this.teamMembers.removeAllElements();
+	}
 }

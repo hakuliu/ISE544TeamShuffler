@@ -22,8 +22,9 @@ public class AllTeamsView {
 		gl.setVgap(2);
 		this.panel.setLayout(gl);
 		
-		for(int i = 0 ; i < 10 ; i++) {
-			TeamView tv = new TeamView(this.control);
+		TeamModel[] models = this.control.getTeams();
+		for(int i = 0 ; i < models.length ; i++) {
+			TeamView tv = new TeamView(models[i]);
 			this.panel.add(tv.build());
 		}
 		
