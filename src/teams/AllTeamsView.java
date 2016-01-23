@@ -17,7 +17,7 @@ public class AllTeamsView {
 	
 	public JPanel build() {
 		this.panel.removeAll();
-		GridLayout gl = new GridLayout(3, 4);
+		GridLayout gl = new GridLayout(4, 3);
 		gl.setHgap(2);
 		gl.setVgap(2);
 		this.panel.setLayout(gl);

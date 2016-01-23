@@ -18,8 +18,8 @@ public class UtilController {
 	}
 	
 	public void populatedata() {
-		//hard-coded 10 of these for now...
-		this.teams = new TeamModel[10];
+		//hard-coded 12 of these for now...
+		this.teams = new TeamModel[12];
 		for(int i = 0 ; i < this.teams.length ; i++) {
 			this.teams[i] = new TeamModel("Team " + (i+1));
 		}

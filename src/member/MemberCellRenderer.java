@@ -25,20 +25,18 @@ public class MemberCellRenderer implements ListCellRenderer<Member>{
 			//rv.setBorder(selectedborder);
 		}
 		
-		rv.setLayout(new GridLayout(1, 2));
+		rv.setLayout(new GridLayout(1, 3));
 		
-		JPanel infosection = new JPanel(new GridLayout(1, 3));
-		
-		
-	
-		
-		JLabel name = getNameSexLabel(value);
-		infosection.add(name);
+		JPanel infosection = new JPanel(new GridLayout(1, 2));
 		
 		infosection.add(getNationLabel(value));
 		
 		infosection.add(getDenLabel(value));
 		
+	
+		
+		JLabel name = getNameSexLabel(value);
+		rv.add(name);
 		rv.add(infosection);
 		rv.add(value.avail.getUIView());
 		
