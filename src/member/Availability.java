@@ -109,9 +109,28 @@ public class Availability {
 		return daystr+divstr;
 	}
 	
+	//takes a list of availabilities and mashes them together
+	public static Availability mashUpAvailabilities(Availability[] list, Availability copyto) {
+		for(int i = 0 ; i < copyto.listoavail.length ; i++) {
+			AvailabilityOption resultingOpt = AvailabilityOption.YES;
+			for(int j = 0 ; j < list.length ; j++) {
+				AvailabilityOption tocheck = list[j].listoavail[i];
+				if(tocheck == AvailabilityOption.NO) {
+					resultingOpt = AvailabilityOption.NO;
+					break;
+				} else if (tocheck == AvailabilityOption.MAYBE) {
+					resultingOpt = AvailabilityOption.MAYBE;
+				}
+			}
+			copyto.listoavail[i] = resultingOpt;
+		}
+		
+		return copyto;
+	}
+	
 	public static enum AvailabilityOption {
 		YES(new Color(0, 153, 51)),
-		MAYBE(new Color(255, 255, 153)),
+		MAYBE(new Color(153, 204, 0)),
 		NO(new Color(255, 77, 77));
 		
 		Color uicolor;
@@ -123,4 +142,5 @@ public class Availability {
 			return this.uicolor;
 		}
 	}
+	
 }

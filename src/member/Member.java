@@ -39,6 +39,10 @@ public class Member {
 		return m;
 	}
 	
+	public Availability getAvailability() {
+		return this.avail;
+	}
+	
 	public static Member createRandomMember() {
 		//get a list of possible options
 		Member rv = new Member();

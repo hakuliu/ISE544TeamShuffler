@@ -24,20 +24,23 @@ import member.MemberTransferListener;
 public class TeamView {
 	JPanel panel;
 	TeamModel tmodel;
+	TeamQuickStatView bottomview;
 	public TeamView(TeamModel mod) {
 		this.tmodel = mod;
 		this.panel = new JPanel();
-		
+		this.bottomview = new TeamQuickStatView(this.tmodel);
 	}
 	
 	public JPanel build() {
 		this.panel.setLayout(new BorderLayout());
 		this.panel.setBackground(Color.gray);
-		this.panel.add(new JLabel("team name"), BorderLayout.NORTH);
+		this.panel.add(new JLabel(tmodel.teamName), BorderLayout.NORTH);
 		//this guy's created empty for now.
 		JList<Member> list = getList();
 		JScrollPane scrolly = new JScrollPane(list);
 		this.panel.add(scrolly, BorderLayout.CENTER);
+		
+		this.panel.add(this.bottomview.build(), BorderLayout.SOUTH);
 		return this.panel;
 	}
 	

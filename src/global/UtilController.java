@@ -11,8 +11,6 @@ public class UtilController {
 		
 	}
 	
-	//if I actually wanted to do mvc this probably should give a read-only
-	//but i'm lazy right now lol
 	public MemberPoolModel getMemberPool() {
 		return this.poolmodel;
 	}
