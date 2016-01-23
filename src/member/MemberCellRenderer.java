@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -24,28 +25,22 @@ public class MemberCellRenderer implements ListCellRenderer<Member>{
 			//rv.setBorder(selectedborder);
 		}
 		
-		rv.setLayout(new GridBagLayout());
+		rv.setLayout(new GridLayout(1, 2));
 		
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.gridheight = 1;
-		gbc.gridwidth = 1;
-		gbc.weighty = 1.0;
-		gbc.weightx = 1.0;
-		gbc.fill = GridBagConstraints.BOTH;
-		gbc.gridx = 0;
-		gbc.gridy = 0;
+		JPanel infosection = new JPanel(new GridLayout(1, 3));
+		
+		
+	
 		
 		JLabel name = getNameSexLabel(value);
-		rv.add(name, gbc);
+		infosection.add(name);
 		
-		gbc.gridx++;
-		rv.add(getNationLabel(value), gbc);
+		infosection.add(getNationLabel(value));
 		
-		gbc.gridx++;
-		rv.add(getDenLabel(value), gbc);
+		infosection.add(getDenLabel(value));
 		
-//		gbc.gridx++;
-//		rv.add(value.avail.getUIView(), gbc);
+		rv.add(infosection);
+		rv.add(value.avail.getUIView());
 		
 		return rv;
 	}
