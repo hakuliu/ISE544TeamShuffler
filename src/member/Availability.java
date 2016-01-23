@@ -10,6 +10,8 @@ import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.apache.commons.csv.CSVRecord;
+
 public class Availability {
 	static final int DAILYDIVISION = 3;
 	static final int DAYSPERWEEK = 7;
@@ -36,6 +38,75 @@ public class Availability {
 		}
 		
 		return rv;
+	}
+	
+	public void readAvailFromCSV(CSVRecord record) {
+		for(int i = 0 ; i < listoavail.length ; i++) {
+			String tag = getDayTagFromNumber(i);
+			String optstr = record.get(tag);
+			this.listoavail[i] = parseOption(optstr);
+		}
+	}
+	
+	private AvailabilityOption parseOption(String opt) {
+		if (opt.equalsIgnoreCase("Yes")) {
+			return AvailabilityOption.YES;
+		} else if (opt.equalsIgnoreCase("Maybe")) {
+			return AvailabilityOption.MAYBE;
+		} else {
+			return AvailabilityOption.NO;
+		}
+	}
+	
+	private String getDayTagFromNumber(int i) {
+		String daystr = "";
+		String divstr = "";
+		
+		int dayi = i / DAILYDIVISION;
+		int divi = i % DAILYDIVISION;
+		
+		switch (dayi) {
+		case 0:
+			daystr = "Sun";
+			break;
+		case 1:
+			daystr = "Mon";
+			break;
+		case 2:
+			daystr = "Tue";
+			break;
+		case 3:
+			daystr = "Wed";
+			break;
+		case 4:
+			daystr = "Thu";
+			break;
+		case 5:
+			daystr = "Fri";
+			break;
+		case 6:
+			daystr = "Sat";
+			break;
+		default:
+			daystr = "Sun";//idk, need a default.
+			break;
+		}
+		
+		switch (divi) {
+		case 0:
+			divstr = "Morn";
+			break;
+		case 1:
+			divstr = "Aft";
+			break;
+		case 2:
+			divstr = "Eve";
+			break;
+		default:
+			break;
+		}
+		
+		return daystr+divstr;
 	}
 	
 	public static enum AvailabilityOption {

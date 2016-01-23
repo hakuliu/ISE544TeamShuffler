@@ -32,6 +32,10 @@ public class Member {
         String gender = record.get("Gender");
         m.male = gender.equalsIgnoreCase("Male");
         
+        Availability av = new Availability();
+        av.readAvailFromCSV(record);
+        m.avail = av;
+        
 		return m;
 	}
 	
