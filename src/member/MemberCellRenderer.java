@@ -27,12 +27,17 @@ public class MemberCellRenderer implements ListCellRenderer<Member>{
 		
 		rv.setLayout(new GridLayout(1, 3));
 		
-		JPanel infosection = new JPanel(new GridLayout(1, 2));
+		JPanel infosection = new JPanel(new GridLayout(1, 5));
 		
 		infosection.add(getNationLabel(value));
 		
 		infosection.add(getDenLabel(value));
 		
+		infosection.add(getMajorLabel(value));
+		
+		infosection.add(getTimeLabel(value));
+		
+		infosection.add(getAttitudeLabel(value));
 	
 		
 		JLabel name = getNameSexLabel(value);
@@ -60,12 +65,49 @@ public class MemberCellRenderer implements ListCellRenderer<Member>{
 		JLabel rv = new JLabel();
 		Color toset = new Color(255, 153, 153);
 		if(mem.den) {
-			rv.setText("D");
+			rv.setText("DEN");
 			toset = new Color(255, 204, 102);
 		} else {
-			rv.setText("O");
+			rv.setText("OnCampus");
 		}
 		rv.setBackground(toset);
+		rv.setOpaque(true);
+		return rv;
+	}
+	
+	private JLabel getAttitudeLabel(Member mem) {
+		JLabel rv = new JLabel();
+		rv.setText(mem.attitudestr);
+		return rv;
+	}
+	
+	private JLabel getTimeLabel(Member mem) {
+		JLabel rv = new JLabel();
+		String zone = mem.timezone;
+		rv.setText(zone);
+		if(zone.equalsIgnoreCase("PST")) {
+			rv.setBackground(new Color(153, 204, 0));
+		} else if(zone.equalsIgnoreCase("EST")) {
+			rv.setBackground(new Color(153, 153, 255));
+		} else {
+			rv.setBackground(new Color(255, 153, 102));
+		}
+		rv.setOpaque(true);
+		return rv;
+	}
+	
+	private JLabel getMajorLabel(Member mem) {
+		JLabel rv = new JLabel();
+		String major = mem.major;
+		rv.setText(major);
+		if(major.equalsIgnoreCase("EM")||
+				major.equalsIgnoreCase("ISE")||
+				major.equalsIgnoreCase("PDE")||
+				major.equalsIgnoreCase("OR")||
+				major.equalsIgnoreCase("SAE")) {
+			//thems ISE dept
+			rv.setBackground(Color.white);
+		}
 		rv.setOpaque(true);
 		return rv;
 	}

@@ -9,7 +9,11 @@ public class Member {
 	String nation;
 	boolean male;
 	boolean den;
+	String timezone;
+	String major;
 	String[] languages;
+	String attitudestr;//not sure if i wanna parse it into int or not yet..
+	
 	Availability avail;
 	
 	public Member() {
@@ -17,8 +21,7 @@ public class Member {
 	}
 
 	public static Member readFromCSVRecord(CSVRecord record) {
-//		Member m = new Member();
-		Member m = createRandomMember();
+		Member m = new Member();
 		String last = record.get("Last Name");
         String first = record.get("First name");
         m.name = new String(first + " " + last);
@@ -32,6 +35,15 @@ public class Member {
         String gender = record.get("Gender");
         m.male = gender.equalsIgnoreCase("Male");
         
+        String attitude = record.get("Attitude toward class");
+        m.attitudestr = attitude;
+        
+        String major = record.get("Major");
+        m.major = major;
+        
+        String timezone = record.get("Your Local Time zone");
+        m.timezone = timezone;
+        
         Availability av = new Availability();
         av.readAvailFromCSV(record);
         m.avail = av;
@@ -42,12 +54,5 @@ public class Member {
 	public Availability getAvailability() {
 		return this.avail;
 	}
-	
-	public static Member createRandomMember() {
-		//get a list of possible options
-		Member rv = new Member();
-		rv.name = "test";
-		rv.nation = "ttt";
-		return rv;
-	}
+
 }

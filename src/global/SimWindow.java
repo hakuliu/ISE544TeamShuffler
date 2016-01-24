@@ -30,7 +30,7 @@ public class SimWindow {
 		this.controller = controller;
 	}
 	public void build() {
-		Dimension defaultDim = new Dimension(1000,700);
+		Dimension defaultDim = new Dimension(1200,700);
 		window.setSize(defaultDim);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JMenuBar topbar = buildMenuBar();
@@ -104,7 +104,7 @@ public class SimWindow {
 		JPanel mock3 = new JPanel();
 		mock3.setBackground(Color.gray);
 		mock3.setForeground(Color.white);
-		mock3.add(new JLabel("<html>I was going to put<br>selected team's more detailed info here...<br>but we'll see if I have time...<html>"));
+		mock3.add(new JLabel("<html>I was going to put<br>selected team's more detailed info here...<br>but we'll see if I have time :P<html>"));
 		view.add(mock3, gbc);
 		
 		return view;
