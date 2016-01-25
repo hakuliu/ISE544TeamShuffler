@@ -8,6 +8,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 
 import javax.swing.Action;
 import javax.swing.JFrame;
@@ -16,7 +17,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
+import member.Member;
 import memberpool.MemberPoolView;
 import teams.AllTeamsView;
 
@@ -46,16 +49,29 @@ public class SimWindow {
 		JMenuBar topbar = new JMenuBar();
 		JMenu filesMenu = new JMenu("File");
 		
-		JMenuItem generateRandom = new JMenuItem("Reset");
-		generateRandom.addActionListener(new ActionListener() {
+		JMenuItem resetmenu = new JMenuItem("Reset");
+		resetmenu.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				clearAllProgress();
 			}
 		});
-		filesMenu.add(generateRandom);
+		filesMenu.add(resetmenu);
 		
+		JMenuItem resetFavor = new JMenuItem("Clear Favors");
+		resetFavor.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ArrayList<Member> mm = controller.getAllMembers();
+				for(Member m : mm) {
+					m.setFavor(false);
+				}
+				invokerepaint();
+			}
+		});
+		filesMenu.add(resetFavor);
 		
 		JMenuItem closemenu = new JMenuItem("Close");
 		closemenu.addActionListener(new ActionListener() {
@@ -108,6 +124,16 @@ public class SimWindow {
 		view.add(mock3, gbc);
 		
 		return view;
+	}
+	
+	public void invokerepaint() {
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				window.repaint();
+			}
+		});
 	}
 	
 	public void show() {

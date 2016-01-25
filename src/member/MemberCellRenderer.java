@@ -15,6 +15,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 
 public class MemberCellRenderer implements ListCellRenderer<Member>{
+	private static Color favorcolor = new Color(0, 153, 51);
 	@Override
 	public Component getListCellRendererComponent(JList<? extends Member> list, Member value, int index,
 			boolean isSelected, boolean cellHasFocus) {
@@ -44,7 +45,9 @@ public class MemberCellRenderer implements ListCellRenderer<Member>{
 		rv.add(name);
 		rv.add(infosection);
 		rv.add(value.avail.getUIView());
-		
+		if(value.favor) {
+			name.setForeground(favorcolor);
+		}
 		return rv;
 	}
 	

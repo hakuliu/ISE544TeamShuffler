@@ -65,6 +65,13 @@ public class Availability {
 		return score;
 	}
 	
+	public static int getDayScoreBetween(Availability av1, Availability av2) {
+		Availability result = new Availability();
+		Availability[] two = new Availability[]{av1, av2};
+		mashUpAvailabilities(two, result);
+		return result.getDayScore();
+	}
+	
 	private AvailabilityOption parseOption(String opt) {
 		if (opt.equalsIgnoreCase("Yes")) {
 			return AvailabilityOption.YES;

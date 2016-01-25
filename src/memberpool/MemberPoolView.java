@@ -38,7 +38,7 @@ public class MemberPoolView {
 		freememberslist.setCellRenderer(new MemberCellRenderer());
 		freememberslist.setDragEnabled(true);
 		freememberslist.setTransferHandler(new MemberTransferListener());
-		
+		//freememberslist.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		freememberslist.setDropMode(DropMode.ON_OR_INSERT);
 		JScrollPane scrolly = new JScrollPane(freememberslist);
 		

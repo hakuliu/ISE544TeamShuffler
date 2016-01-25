@@ -23,7 +23,7 @@ public class MemberPoolModel {
 		}
 	}
 	
-	public ListModel getModel() {
+	public ListModel<Member> getModel() {
 		return jlistmodel;
 	}
 }

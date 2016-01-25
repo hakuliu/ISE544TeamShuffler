@@ -24,7 +24,7 @@ public class AllTeamsView {
 		
 		TeamModel[] models = this.control.getTeams();
 		for(int i = 0 ; i < models.length ; i++) {
-			TeamView tv = new TeamView(models[i]);
+			TeamView tv = new TeamView(models[i], control);
 			this.panel.add(tv.build());
 		}
 		

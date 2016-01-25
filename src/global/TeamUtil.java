@@ -15,7 +15,7 @@ public class TeamUtil {
 		SimWindow window = new SimWindow(controller);
 		window.build();
 		window.show();
-		
+		controller.setWindow(window);
 	}
 
 }

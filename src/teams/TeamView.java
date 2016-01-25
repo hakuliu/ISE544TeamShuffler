@@ -25,10 +25,10 @@ public class TeamView {
 	JPanel panel;
 	TeamModel tmodel;
 	TeamQuickStatView bottomview;
-	public TeamView(TeamModel mod) {
+	public TeamView(TeamModel mod, UtilController controller) {
 		this.tmodel = mod;
 		this.panel = new JPanel();
-		this.bottomview = new TeamQuickStatView(this.tmodel);
+		this.bottomview = new TeamQuickStatView(this.tmodel, controller);
 	}
 	
 	public JPanel build() {

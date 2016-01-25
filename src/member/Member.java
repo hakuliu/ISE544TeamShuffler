@@ -13,7 +13,7 @@ public class Member {
 	String major;
 	String[] languages;
 	String attitudestr;//not sure if i wanna parse it into int or not yet..
-	
+	boolean favor;
 	Availability avail;
 	
 	public Member() {
@@ -49,6 +49,12 @@ public class Member {
         m.avail = av;
         
 		return m;
+	}
+	
+	public void setFavor(boolean tf) {
+		
+		this.favor = tf;
+		
 	}
 	
 	public Availability getAvailability() {
